@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+    <title>Fractal Lyrics</title>
+</head>
+<body>
+    <h1>Fractal Visualization of Lyrics & Poems</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Analyze and Generate Fractal</button>
+    </form>
+
+    {% if fractal_image %}
+        <h2>Fractal Visualization</h2>
+        <img src="{% static fractal_image %}" alt="Fractal Image">
+    {% endif %}
+    {% if error_msg %}
+    <p style="color: red;">{{ error_msg }}</p>
+    {% endif %}
+
+</body>
+</html>
